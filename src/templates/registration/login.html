@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+.login{
+	text-align: center;
+	color: rgb(16, 87, 96);
+	font-size: 25px;
+}
+
+.form{
+	text-align: center;
+}
+
+.have_account{
+	text-align: center;
+	color: black;
+	padding-top: 20px;
+
+}
+
+.box{
+	background-color: whitesmoke;
+	padding: 10px;
+	margin-top: 30px;
+	margin-left: auto;
+	margin-bottom: 50px;
+	margin-right: auto;
+	width: 300px;
+	border-radius: 10px;
+}
+
+.row{
+	padding: 10px;
+	text-align: center;
+	padding-top: 20px;
+}
+
+input{
+	padding: 7px;
+	border-radius: 7px;
+	
+}
+
+input[type='submit']{
+	padding: 10px;
+	border-radius: 6px;
+	size: 15px;
+	padding-left: 25px;
+	padding-right: 25px;
+	background-color: rgb(16, 87, 96);
+	color: white;
+}
+
+input[type='submit']:hover{
+	background-color: white;
+	color: black;
+}
+</style>
+
+<body>
+	<div >
+		<div>
+
+			<div class="login">
+				<h3">Welcome Back!</h3>
+			</div>
+
+			<div class="box">
+				
+				<div class="form">
+					<form method="POST" action="">
+						{% csrf_token %}
+						<div class="row">
+							<div>
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+
+							<input type="text" name="username" placeholder="Username..." class="form-control">
+						</div>
+						
+						<div class="row">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+
+								<input type="password" name="password" placeholder="Password..." class="form-control" >
+						</div>
+							<div>
+				 				<input type="submit" value="Login">
+				   			</div>
+					</form>
+
+				</div>
+				<div class="have_account">
+					<div>
+						Don't have an account? <a href="{% url 'register' %}" class="ml-2">Register</a>
+					</div>
+					<div>
+						Forgot password?<a class="nav-link text-black font-weight-bold" href="{% url 'password_reset' %}">Reset Password</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+{% endblock content %}

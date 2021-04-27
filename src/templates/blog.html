@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}
+	BLOG
+{% endblock%}
+
+{% block content %}
+
+<style>
+    header{
+        color: rgb(12, 80, 90);
+        border-color: powderblue;
+    }
+
+    .post{
+        display:flexbox;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
+
+</style>
+
+<header>
+    <h2> Welcome to My Campus Story </h2>
+</header>         
+            <div class="welcome">
+                Welcome {{ user.username}}!
+            </div>
+
+            <br>
+            <br>
+        <!-- Story Column -->
+        <div>
+            {% for post in post_list %}
+            <div>
+                <div class="post">
+                    <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+                    <p>{{ post.author }} | {{ post.created_on}} </p>
+                    <p>{{post.content|slice:":200" }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+      <ul>
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; Prev </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> Next &raquo;</a></li>
+            {% endif %}
+      </ul>
+</div>
+{%endblock%}
