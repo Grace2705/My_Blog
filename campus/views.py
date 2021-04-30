@@ -7,7 +7,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from .forms import RegisterForm
+from .forms import RegisterForm, Newpostform
+from django.contrib.auth.models import User
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
@@ -33,7 +34,6 @@ def RegisterView(request):
 		form = RegisterForm()
 
 	return render(request, 'register.html', {'form': form})
-
 
 
 def LoginView(request):
@@ -73,7 +73,8 @@ class Blogdetailview(DetailView):
 class Blogcreateview(CreateView):
     model = Post
     template_name = 'post_new.html'
-    fields = ['title', 'author', 'body']
+    author = Post.author
+    fields = ['title',author, 'body']
 
 class AddCommentview(CreateView):
     model = AddComment
