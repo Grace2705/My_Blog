@@ -1,2 +1,7 @@
 # My_Blog
- a django blog
+ A django blog application named campusstory
+ https://campusstory.herokuapp.com/
+
+# To be improved:
+ - UI
+ - More functionalities
